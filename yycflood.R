@@ -6,6 +6,9 @@ require(ggplot2)
 require(reshape)
 require(gridExtra)
 
+# Load data (to maintain history, after AEnv removes older data...)
+if(file.exists("river_data.Rda")){load("river_data.Rda")}
+
 # Set-up Data Sources
 stations<-data.frame()
 stations<-rbind(stations,data.frame(river="Bow River",station="Lake Louise",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BA001.csv"))
@@ -17,6 +20,8 @@ stations<-rbind(stations,data.frame(river="Elbow River",station="Bragg Creek",ur
 stations<-rbind(stations,data.frame(river="Elbow River",station="Sarcee",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ010.csv"))
 stations<-rbind(stations,data.frame(river="Elbow River",station="Glenmore Below Dam",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ001.csv"))
 
+if(exists("raw.data")){old.data<-raw.data}
+
 # Load Data from URLs
 stations$url<-as.character(stations$url)
 raw.data<-NULL
@@ -26,6 +31,13 @@ for(i in 1:nrow(stations))
   raw.data<-rbind(raw.data,
                   cbind(river=stations$river[i],station=stations$station[i],read.table(file=stations$url[i],sep=",",skip=22,header=TRUE,fill=TRUE,blank.lines.skip=TRUE,stringsAsFactors=FALSE)))
 }
+
+# Add old data
+if(exists("old.data")){raw.data<-rbind(old.data,raw.data)}
+
+# Remove Duplicates
+raw.data<-raw.data[!duplicated(raw.data),]
+save(raw.data,file="river_data.Rda")
 
 # Clean-up & Format Data
 colnames(raw.data)<-c("river","name","station.no","date","water.level.m","flow.m3s")
