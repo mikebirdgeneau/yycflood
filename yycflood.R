@@ -16,9 +16,10 @@ stations<-rbind(stations,data.frame(river="Bow River",station="Banff",url="http:
 stations<-rbind(stations,data.frame(river="Bow River",station="Cochrane",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BH005.csv"))
 stations<-rbind(stations,data.frame(river="Bow River",station="Calgary",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BH004.csv"))
 stations<-rbind(stations,data.frame(river="Bow River",station="Carseland",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BM002.csv"))
+stations<-rbind(stations,data.frame(river="Bow River",station="Bassano",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BM004.csv"))
 stations<-rbind(stations,data.frame(river="Elbow River",station="Bragg Creek",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ004.csv"))
 stations<-rbind(stations,data.frame(river="Elbow River",station="Sarcee",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ010.csv"))
-stations<-rbind(stations,data.frame(river="Elbow River",station="Glenmore Below Dam",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ001.csv"))
+stations<-rbind(stations,data.frame(river="Elbow River",station="Glenmore",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ001.csv"))
 
 if(exists("raw.data")){old.data<-raw.data}
 
@@ -32,7 +33,7 @@ for(i in 1:nrow(stations))
                   cbind(river=stations$river[i],station=stations$station[i],read.table(file=stations$url[i],sep=",",skip=22,header=TRUE,fill=TRUE,blank.lines.skip=TRUE,stringsAsFactors=FALSE)))
 }
 
-# Add old data, if not in the latest data
+# Add old data, if not included in the latest data
 old.data<-old.data[!which(old.data$Date...Time.in.MST %in% raw.data$Date...Time.in.MST),]
 if(nrow(old.data)>0 & exists("old.data")){raw.data<-rbind(old.data,raw.data)}
 
@@ -64,7 +65,7 @@ p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name
 
 # Save to Image File
 png("yycflood_riverplots.png",width=800,height=494,res=96)
-grid.arrange(p1,nrow=1,sub = textGrob(paste0("Last Update: ",max(raw.data$date),",  Data: Alberta Environment (Preliminary, subject to change) "), x=1, hjust=1, vjust=0,gp=gpar(fontsize=12)))
+grid.arrange(p1,nrow=1,sub = textGrob(paste0("Last Update: ",max(raw.data$date),",  Data: Alberta Environment (preliminary, subject to change) "), x=1, hjust=1, vjust=0,gp=gpar(fontsize=12)))
 dev.off()
 
 # Output newest date
