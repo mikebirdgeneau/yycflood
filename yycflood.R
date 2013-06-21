@@ -61,10 +61,10 @@ melted.data<-melt(raw.data,id.vars=c("river","name","station.no","date"))
 
 # Filter data & Build Plot
 plot.data<-subset(melted.data,date>=as.POSIXct("2013-06-19 12:00:00",tz="MST") & variable %in% c("Flow Rate (m3/s)","Normalized Water Level"))
-p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name))+xlab("Date")+ylab("")+ggtitle("River Flow and Water Level - #yycflood")+facet_grid(river~.)+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+facet_grid(variable~river,scales="free")
+p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name))+xlab("Date")+ylab("")+ggtitle("River Flow and Water Level - #yycflood")+facet_grid(river~.)+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+facet_grid(variable~river,scales="free")+theme(axis.text.x = element_text(angle = -90, hjust = 1))
 
 # Save to Image File
-png("yycflood_riverplots.png",width=800,height=494,res=96)
+png("yycflood_riverplots.png",width=1400,height=865,res=96)
 grid.arrange(p1,nrow=1,sub = textGrob(paste0("Last Update: ",max(raw.data$date),",  Data: Alberta Environment (preliminary, subject to change) "), x=1, hjust=1, vjust=0,gp=gpar(fontsize=12)))
 dev.off()
 
