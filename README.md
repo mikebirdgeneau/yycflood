@@ -1,4 +1,4 @@
-#yycflood River Data
+yycflood River Data
 ========
 
 This R analysis pulls river flow and height data from Alberta Environment, and generates a plot for both the Bow & Elbow rivers showing flow-rate trends and normalized water levels (relative to pre-flood levels). 
