@@ -32,8 +32,9 @@ for(i in 1:nrow(stations))
                   cbind(river=stations$river[i],station=stations$station[i],read.table(file=stations$url[i],sep=",",skip=22,header=TRUE,fill=TRUE,blank.lines.skip=TRUE,stringsAsFactors=FALSE)))
 }
 
-# Add old data
-if(exists("old.data")){raw.data<-rbind(old.data,raw.data)}
+# Add old data, if not in the latest data
+old.data<-old.data[!which(old.data$Date...Time.in.MST %in% raw.data$Date...Time.in.MST),]
+if(nrow(old.data)>0 & exists("old.data")){raw.data<-rbind(old.data,raw.data)}
 
 # Remove Duplicates
 raw.data<-raw.data[!duplicated(raw.data),]
