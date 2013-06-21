@@ -63,5 +63,8 @@ p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name
 
 # Save to Image File
 png("yycflood_riverplots.png",width=800,height=494,res=96)
-grid.arrange(p1,nrow=1,sub = textGrob(paste0("Last Update: ",max(raw.data$date),",  Data: Alberta Environment "), x=1, hjust=1, vjust=0,gp=gpar(fontsize=12)))
+grid.arrange(p1,nrow=1,sub = textGrob(paste0("Last Update: ",max(raw.data$date),",  Data: Alberta Environment (Preliminary, subject to change) "), x=1, hjust=1, vjust=0,gp=gpar(fontsize=12)))
 dev.off()
+
+# Output newest date
+max(plot.data$date)
