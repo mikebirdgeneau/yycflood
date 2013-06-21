@@ -61,7 +61,7 @@ melted.data<-melt(raw.data,id.vars=c("river","name","station.no","date"))
 
 # Filter data & Build Plot
 plot.data<-subset(melted.data,date>=as.POSIXct("2013-06-19 18:00:00",tz="MST") & variable %in% c("Flow Rate (m3/s)","Normalized Water Level"))
-p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name))+xlab("Date")+ylab("")+ggtitle("River Flow and Water Level - #yycflood")+facet_grid(river~.)+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+facet_wrap(variable~river,scales="free")+theme(axis.text.x = element_text(angle = -90, hjust = 1))
+p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name))+xlab("Date")+ylab("")+ggtitle("River Flow and Water Level - #yycflood\n")+facet_grid(river~.)+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+facet_wrap(variable~river,scales="free")+theme(axis.text.x = element_text(angle = -90, hjust = 1))
 
 # Save to Image File
 png("yycflood_riverplots.png",width=1400,height=865,res=96)
