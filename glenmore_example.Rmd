@@ -46,23 +46,10 @@ spare.capacity
 Next let's suppose inflow from the Elbow is occurring at 500m3/s, and we can flow 200m3/s without downstream flooding:
 ```{r}
 reservoir.inflow<-500 #m3/s
-reservoir.outflow<-300 #m3/s, assume
+reservoir.outflow<-200 #m3/s, assume
 fill.time<-spare.capacity/((reservoir.inflow-reservoir.outflow)*3600)
 fill.time
 ```
-So it would take ~ `r fill.time` hours to fill that spare capacity, after this, we would have to increase reservoir.outflow!
+So it would take ~ `r round(fill.time,0)` hours to fill that spare capacity, after this, we would have to increase flow down the Elbow river from the Glenmore Dam... 
 
-
-
-
-
-```{r}
-summary(cars)
-```
-
-You can also embed plots, for example:
-
-```{r fig.width=7, fig.height=6}
-plot(cars)
-```
-
+There's a whole bunch of transient analysis that could be done to show the complexity of the system, but I'll leave that for the pros!

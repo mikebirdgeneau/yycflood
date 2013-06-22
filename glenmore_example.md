@@ -73,44 +73,15 @@ Next let's suppose inflow from the Elbow is occurring at 500m3/s, and we can flo
 
 ```r
 reservoir.inflow <- 500  #m3/s
-reservoir.outflow <- 300  #m3/s, assume
+reservoir.outflow <- 200  #m3/s, assume
 fill.time <- spare.capacity/((reservoir.inflow - reservoir.outflow) * 3600)
 fill.time
 ```
 
 ```
-## [1] 26.67
+## [1] 17.78
 ```
 
-So it would take ~ 26.6667 hours to fill that spare capacity, after this, we would have to increase reservoir.outflow!
+So it would take ~ 18 hours to fill that spare capacity, after this, we would have to increase flow down the Elbow river from the Glenmore Dam...
 
-
-
-
-
-
-```r
-summary(cars)
-```
-
-```
-##      speed           dist    
-##  Min.   : 4.0   Min.   :  2  
-##  1st Qu.:12.0   1st Qu.: 26  
-##  Median :15.0   Median : 36  
-##  Mean   :15.4   Mean   : 43  
-##  3rd Qu.:19.0   3rd Qu.: 56  
-##  Max.   :25.0   Max.   :120
-```
-
-
-You can also embed plots, for example:
-
-
-```r
-plot(cars)
-```
-
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
-
-
+There's a whole bunch of transient analysis that could be done to show the complexity of the system, but I'll leave that for the pros!
