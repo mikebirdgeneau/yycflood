@@ -42,7 +42,7 @@ precip.volume
 
 
 Next let's use max out-flow of the Elbow River assumed to be ~ 600m3/s, to see how long it would take to dissipate
-thus precipitation from Glenmore Reservoir:
+this precipitation from Glenmore Reservoir (good news is that it takes time for this precipitation to make it to the reservoir):
 
 ```r
 max.elbow <- 600  #m3/s
