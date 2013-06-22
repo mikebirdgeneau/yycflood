@@ -26,6 +26,7 @@ res.stations<-rbind(res.stations,data.frame(reservoir="Glenmore",url="http://www
 res.stations<-rbind(res.stations,data.frame(reservoir="Ghost",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BE005.csv"))
 res.stations<-rbind(res.stations,data.frame(reservoir="Bearspaw",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BH010.csv"))
 res.stations<-rbind(res.stations,data.frame(reservoir="Horseshoe",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/TAU-004.csv"))
+res.stations<-rbind(res.stations,data.frame(reservoir="Cascade",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/TAU-002.csv"))
 res.stations<-rbind(res.stations,data.frame(reservoir="Barrier",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BF024.csv"))
 res.stations<-rbind(res.stations,data.frame(reservoir="Spray Lake",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BC006.csv"))
 
