@@ -21,21 +21,47 @@ stations<-rbind(stations,data.frame(river="Elbow River",station="Bragg Creek",ur
 stations<-rbind(stations,data.frame(river="Elbow River",station="Sarcee",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ010.csv"))
 stations<-rbind(stations,data.frame(river="Elbow River",station="Glenmore",url="http://www.environment.alberta.ca/apps/Basins/data/text/river/05BJ001.csv"))
 
+res.stations<-data.frame()
+res.stations<-rbind(res.stations,data.frame(reservoir="Glenmore",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BJ008.csv"))
+res.stations<-rbind(res.stations,data.frame(reservoir="Ghost",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BE005.csv"))
+res.stations<-rbind(res.stations,data.frame(reservoir="Bearspaw",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BH010.csv"))
+res.stations<-rbind(res.stations,data.frame(reservoir="Horseshoe",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/TAU-004.csv"))
+res.stations<-rbind(res.stations,data.frame(reservoir="Barrier",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BF024.csv"))
+res.stations<-rbind(res.stations,data.frame(reservoir="Spray Lake",url="http://www.environment.alberta.ca/apps/Basins/data/text/lake/05BC006.csv"))
+
+
 if(exists("raw.data")){old.data<-raw.data}
+if(exists("raw.res.data")){old.res.data<-raw.res.data}
 
 # Load Data from URLs
 stations$url<-as.character(stations$url)
+res.stations$url<-as.character(res.stations$url)
+
 raw.data<-NULL
 raw.data<-data.frame()
 for(i in 1:nrow(stations))
 {
-  raw.data<-rbind(raw.data,
-                  cbind(river=stations$river[i],station=stations$station[i],read.table(file=stations$url[i],sep=",",skip=22,header=TRUE,fill=TRUE,blank.lines.skip=TRUE,stringsAsFactors=FALSE)))
+  raw.data<-rbind(raw.data,cbind(river=stations$river[i],station=stations$station[i],read.table(file=stations$url[i],sep=",",skip=22,header=TRUE,fill=TRUE,blank.lines.skip=TRUE,stringsAsFactors=FALSE)))
+}
+
+raw.res.data<-NULL
+raw.res.data<-data.frame()
+for(i in 1:nrow(res.stations))
+{
+  raw.res.data<-rbind(raw.res.data,cbind(reservoir=res.stations$reservoir[i],read.table(file=res.stations$url[i],sep=",",skip=20,header=TRUE,fill=TRUE,blank.lines.skip=TRUE,stringsAsFactors=FALSE)))
 }
 
 # Add old data, if not included in the latest data
-old.data<-old.data[!which(old.data$Date...Time.in.MST %in% raw.data$Date...Time.in.MST),]
-if(nrow(old.data)>0 & exists("old.data")){raw.data<-rbind(old.data,raw.data)}
+if(exists("old.data")){
+  old.data<-old.data[!which(old.data$Date...Time.in.MST %in% raw.data$Date...Time.in.MST),]
+  if(nrow(old.data)>0 ){raw.data<-rbind(old.data,raw.data)}
+}
+
+if(exists("old.res.data"))
+{
+  old.res.data<-old.res.data[!which(old.res.data$Date...Time.in.MST %in% raw.res.data$Date...Time.in.MST),]
+  if(nrow(old.res.data)>0){raw.res.data<-rbind(old.res.data,raw.res.data)}
+}
 
 # Remove Duplicates
 raw.data<-raw.data[!duplicated(raw.data),]
