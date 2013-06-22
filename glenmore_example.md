@@ -3,7 +3,7 @@ Example of Glenmore Reservoir Water Flow
 
 This is a hypothetical example with MANY assumptions of how the glenmore reservoir system will respond to precipitation.
 
-**Disclaimer:** I'm not a hydrogeologist, and don't have any knowledge of how the systme actually works.
+**Disclaimer:** I'm not a hydrogeologist, and don't have any knowledge of how the system actually works.
 
 Here are some numbers about the Glenmore Reservoir:
 
@@ -82,6 +82,6 @@ fill.time
 ## [1] 17.78
 ```
 
-So it would take ~ 18 hours to fill that spare capacity, after this, we would have to increase flow down the Elbow river from the Glenmore Dam...
+So it would take ~ 18 hours to fill that spare capacity, after this, we would have to increase flow down the Elbow river from the Glenmore Dam... 
 
 There's a whole bunch of transient analysis that could be done to show the complexity of the system, but I'll leave that for the pros!

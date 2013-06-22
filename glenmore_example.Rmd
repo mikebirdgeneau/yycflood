@@ -3,7 +3,7 @@ Example of Glenmore Reservoir Water Flow
 
 This is a hypothetical example with MANY assumptions of how the glenmore reservoir system will respond to precipitation.
 
-**Disclaimer:** I'm not a hydrogeologist, and don't have any knowledge of how the systme actually works.
+**Disclaimer:** I'm not a hydrogeologist, and don't have any knowledge of how the system actually works.
 
 Here are some numbers about the Glenmore Reservoir:
 ```{r}
