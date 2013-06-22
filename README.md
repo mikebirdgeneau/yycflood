@@ -13,7 +13,7 @@ It also pulls reservoir water level and storage volumes from dam controlled rese
 ![Reservoir Storage and Water Levels yycflood](yycflood_reservoirplots.png)
 
 **Note:** Real-time data is subject to revision.
-
+(I have no idea as to how accurate this data is, but thought it might be interesting given the current situation!)
 ---------------------------
 
 ### Data Sources:
