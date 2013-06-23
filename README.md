@@ -17,6 +17,12 @@ It also pulls reservoir water level and storage volumes from dam controlled rese
 
 ---------------------------
 
+### Example of Glenmore Reservoir Flow:
+I've also put together a quick example of Glenmore Reservoir flow with some gross assumptions, but I was trying to get an appreciation of what happens when there is significant upstream precipitation / snow melt. 
+[View the example here](glenmore/glenmore_example.md)
+
+---------------------------
+
 ### Data Sources:
 
 Alberta Environment:
