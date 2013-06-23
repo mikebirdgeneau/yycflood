@@ -105,7 +105,7 @@ melted.res.data<-melt(raw.res.data,id.vars=c("reservoir","station.no","date"))
 
 # Filter data & Build Plot
 plot.data<-subset(melted.data,date>=as.POSIXct("2013-06-19 18:00:00",tz="MST") & variable %in% c("Flow Rate (m3/s)","Normalized Water Level"))
-p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name))+geom_point(aes(color=name))+xlab("Date")+ylab("")+ggtitle("River Flow and Water Level - #yycflood #abflood\n")+facet_grid(river~.)+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+facet_grid(variable~river,scales="free")+theme(axis.text.x = element_text(angle = -90, hjust = 1))
+p1<-ggplot(data=plot.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=name))+geom_point(aes(color=name))+xlab("Date")+ylab("")+ggtitle("River Flow and Water Level - #yycflood #abflood\n")+facet_grid(river~.)+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+facet_wrap(variable~river,scales="free")+theme(axis.text.x = element_text(angle = -90, hjust = 1))
 
 plot.res.data<-subset(melted.res.data,date>=as.POSIXct("2013-06-19 18:00:00",tz="MST") & variable %in% c("Storage (m3)","Water Level Change (m)"))
 p2<-ggplot(data=plot.res.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=reservoir))+geom_point(aes(color=reservoir))+xlab("Date")+ylab("")+ggtitle("Reservoir Storage and Water Level - #yycflood #abflood\n")+facet_grid(variable~.,scales="free")+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+theme(axis.text.x = element_text(angle = -90, hjust = 1))
