@@ -29,3 +29,6 @@ http://www.environment.alberta.ca/apps/basins/default.aspx
 
 Environment Canada (Wateroffice):
 http://www.wateroffice.ec.gc.ca/graph/graph_e.html?stn=05BH004
+
+TransAlta Reservoir Info:
+http://www.transalta.com/communities/canada/alberta-hydro/alberta-flood
