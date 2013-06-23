@@ -41,7 +41,7 @@ precip.volume
 
 
 Next let's assume the Elbow River can safely flow at 150m3/s without downstream flooding, to see how long it would take to dissipate this precipitation from Glenmore Reservoir:
-
+(Assuming that the water table is already high due to spring rain, and cannot absorb this precipitation, this all flows downstream?)
 
 ```r
 max.elbow <- 150  #m3/s
