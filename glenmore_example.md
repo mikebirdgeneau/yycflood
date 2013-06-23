@@ -2,7 +2,6 @@ Example of Glenmore Reservoir Water Flow
 ========================================================
 
 This is a hypothetical example with MANY assumptions of how the glenmore reservoir system will respond to precipitation.
-
 **Disclaimer:** I'm not a hydrogeologist, and don't have any knowledge of how the system actually works.
 
 Here are some numbers about the Glenmore Reservoir:
@@ -41,17 +40,17 @@ precip.volume
 ```
 
 
-Next let's use max out-flow of the Elbow River assumed to be ~ 600m3/s, to see how long it would take to dissipate
-this precipitation from Glenmore Reservoir (good news is that it takes time for this precipitation to make it to the reservoir):
+Next let's assume the Elbow River can safely flow at 150m3/s without downstream flooding, to see how long it would take to dissipate this precipitation from Glenmore Reservoir:
+
 
 ```r
-max.elbow <- 600  #m3/s
+max.elbow <- 150  #m3/s
 dissipation.time <- precip.volume/(max.elbow * 3600)
 dissipation.time
 ```
 
 ```
-## [1] 39.21
+## [1] 156.9
 ```
 
 
@@ -69,19 +68,21 @@ spare.capacity
 ```
 
 
-Next let's suppose inflow from the Elbow is occurring at 500m3/s, and we can flow 200m3/s without downstream flooding:
+Next let's suppose inflow from the Elbow is occurring at 500m3/s, and we can flow 150m3/s without downstream flooding (assumption):
 
 ```r
 reservoir.inflow <- 500  #m3/s
-reservoir.outflow <- 200  #m3/s, assume
+reservoir.outflow <- 150  #m3/s, assume
 fill.time <- spare.capacity/((reservoir.inflow - reservoir.outflow) * 3600)
 fill.time
 ```
 
 ```
-## [1] 17.78
+## [1] 15.24
 ```
 
-So it would take ~ 18 hours to fill that spare capacity, after this, we would have to increase flow down the Elbow river from the Glenmore Dam... 
+So it would take ~ 15 hours to fill that spare capacity, after this, we would have to increase flow down the Elbow river from the Glenmore Dam... 
+
+The problem is, at 150m3/s outflow, it would take 157 hours to dissipate the flow, but if we only have 5m of spare capacity (water level) in the reservoir, we can only maintain the 150m3/s of water flow for 15 before the capacity is full and the downstream flow has to increase.
 
 There's a whole bunch of transient analysis that could be done to show the complexity of the system, but I'll leave that for the pros!
