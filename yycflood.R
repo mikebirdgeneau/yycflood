@@ -111,8 +111,8 @@ plot.res.data<-subset(melted.res.data,date>=as.POSIXct("2013-06-19 18:00:00",tz=
 p2<-ggplot(data=plot.res.data,aes(x=date,y=value))+geom_line(lwd=0.75,aes(color=reservoir))+xlab("Date")+ylab("")+ggtitle("Reservoir Storage and Water Level - #yycflood\n")+facet_grid(variable~.,scales="free")+theme_bw()+theme(legend.position="bottom")+scale_color_discrete(name="")+theme(axis.text.x = element_text(angle = -90, hjust = 1))
 
 # Save to Image File
-png("yycflood_riverplots.png",width=1400,height=865,res=96)
-grid.arrange(p1,nrow=1,sub = textGrob(paste0("Last Update: ",max(raw.data$date),"  -  Source: Alberta Environment (real-time data subject to revision) "), x=0.5, hjust=0.5, vjust=0,gp=gpar(fontsize=12)))
+png("yycflood_riverplots.png",width=1400,height=1730,res=96)
+grid.arrange(p1,p2,nrow=2,sub = textGrob(paste0("Last Update: ",max(raw.data$date),"  -  Source: Alberta Environment (real-time data subject to revision) "), x=0.5, hjust=0.5, vjust=0,gp=gpar(fontsize=12)))
 dev.off()
 
 png("yycflood_reservoirplots.png",width=1400,height=865,res=96)
