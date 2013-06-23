@@ -115,9 +115,5 @@ png("yycflood_riverplots.png",width=1400,height=1730,res=96)
 grid.arrange(p1,p2,nrow=2,sub = textGrob(paste0("Last Update: ",max(raw.data$date),"  -  Source: Alberta Environment (real-time data subject to revision) "), x=0.5, hjust=0.5, vjust=0,gp=gpar(fontsize=12)))
 dev.off()
 
-png("yycflood_reservoirplots.png",width=1400,height=865,res=96)
-grid.arrange(p2,nrow=1,sub = textGrob(paste0("Last Update: ",max(raw.res.data$date),"  -  Source: Alberta Environment (real-time data subject to revision) "), x=0.5, hjust=0.5, vjust=0,gp=gpar(fontsize=12)))
-dev.off()
-
 # Output newest date
 max(plot.data$date)
