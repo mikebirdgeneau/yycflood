@@ -8,6 +8,7 @@ require(gridExtra)
 
 # Load data (to maintain history, after AEnv removes older data...)
 if(file.exists("river_data.Rda")){load("river_data.Rda")}
+if(file.exists("reservoir_data.Rda")){load("reservoir_data.Rda")}
 
 # Set-up Data Sources
 stations<-data.frame()
